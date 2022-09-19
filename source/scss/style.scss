@@ -1,5 +1,6 @@
 @import 'reset', 'vars', 'temps', 'mixins';
 
+//-------------GENERAL----------------
 html,
 body {
     background: $mainBgColor;
@@ -7,167 +8,6 @@ body {
     font-size: $mainFontSize;
     color: $mainTextColor;
 }
-
-// TOGGLE DARK MODE
-#mode__toggler {
-    z-index: 1;
-    position: absolute;
-    top: 50px;
-    right: 50%;
-    appearance: none;
-    width: 80px;
-    height: 40px;
-    background: black;
-    border-radius: 22px;
-    cursor: pointer;
-}
-
-/* styling the circle inside the checkbox input */
-#mode__toggler::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 35px;
-    background-color: white;
-    border-radius: 35px;
-    top: 2px;
-    left: 2px;
-    cursor: pointer;
-    transition: .3s linear;
-}
-
-/* Switching to the dark when the checkbox is toggled */
-#mode__toggler:checked+.mode {
-    & .header {
-        background: url('../source/img/bg/bg_1_dark.png') no-repeat;
-        background-size: cover;
-        background-color: $mainBgColorDark;
-        color: $mainTextColorDark;
-    }
-
-    & .blue {
-        color: $titleEmFontColorDark;
-    }
-
-    & .btn {
-        color: $btnColorDark;
-        &::after {
-            background: $btnColorDark;
-        }
-        &:hover {
-            color: $btnColorHoverDark;
-    
-            &::after {
-                background: $btnColorHoverDark;
-                opacity: 0.4;
-            }
-        }
-    }
-}
-
-/* moving the checkbox circle when it's toggled by the user */
-#mode__toggler:checked::before {
-    left: 40px;
-}
-
-/* changing the color of the checkbox when it's toggled */
-#mode__toggler:checked {
-    background: #241da6;
-}
-
-
-
-.header {
-    position: relative;
-    background: url('../source/img/bg/bg_1.png');
-    background-size: cover;
-    min-height: 1028px;
-    padding-top: 30px;
-
-
-    &__container {
-        @extend %flex;
-        padding: 24px calc(50% - 1170px/2);
-        background: linear-gradient(270deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.244636) 24.1%, rgba(255, 255, 255, 0) 47.19%), rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(4.5px);
-        margin: 0 auto 150px;
-
-
-        .nav {
-            &__burger {
-                display: none;
-            }
-
-            &__burger-img {
-                display: none;
-            }
-
-            .menu {
-                @extend %flex;
-                gap: 1.95vw;
-                transition: all 0.6s;
-
-
-                &__item {
-                    position: relative;
-
-                    @media (max-width: 992px) {
-                        padding: 20px 10px;
-                        text-align: center;
-                    }
-
-                }
-
-                &__link {
-                    font-family: $mainFontFamily;
-                    color: $mainTextColor;
-                    font-size: 0.77rem;
-
-
-                    &:hover {
-                        cursor: pointer;
-
-                        &::after {
-                            // @include createLine;
-                        }
-                    }
-
-                    @media (max-width: 992px) {
-                        &:hover {
-                            cursor: pointer;
-                            color: #530003;
-
-                            &::after {
-                                // @include createLine;
-                                bottom: 5px;
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-
-
-    }
-
-    &__logo {
-        @extend %flex;
-        width: 120px;
-        height: 32px;
-    }
-
-    &__info {
-        @extend %flex;
-        padding: 24px calc(50% - 1170px/2);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        max-width: 60%;
-    }
-}
-
-
 
 .title {
     font-family: $titleFontFamily;
@@ -217,5 +57,303 @@ body {
             background: $btnColorHover;
             opacity: 0.4;
         }
+    }
+}
+
+//-------------DARK MODE TOGGLER----------------
+#mode__toggler {
+    z-index: 1;
+    position: absolute;
+    top: 52px;
+    right: 50%;
+    appearance: none;
+    width: 80px;
+    height: 40px;
+    background: $mainBgColorDark;
+    border-radius: 22px;
+    cursor: pointer;
+    transform: scale(0.75);
+
+    @media (max-width: 1170px) {
+        right: 53vw;
+        top: 43px;
+    }
+
+    @media (max-width: 768px) {
+        right: 25vw;
+    }
+
+    @media (max-width: 568px) {
+        right: 35vw;
+    }
+    @media (max-width: 340px) {
+        right: 20vh;
+    }
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 35px;
+        background-color: white;
+        border-radius: 35px;
+        top: 2px;
+        left: 2px;
+        cursor: pointer;
+        transition: .3s linear;
+    }
+
+    &:checked+.mode {
+        & .header {
+            background-color: $mainBgColorDark;
+            background-image: url('../source/img/bg/bg_1_dark.png');
+            color: $mainTextColorDark;
+
+            @media (max-width: 1024px) {
+                background-image: url('../source/img/bg/bg_tablet_dark.png');
+
+            }
+
+            @media (max-width: 568px) {
+                background-image: url('../source/img/bg/bg_mob_dark.png');
+            }
+
+            @media (max-width: 340px) {
+                background-image: url('../source/img/bg/bg_mob_sm_dark.png');
+            }
+
+            & .nav {
+                & .menu {
+                    &__link {
+                        color: $mainTextColorDark;
+                    }
+                }
+            }
+        }
+
+
+
+        & .blue {
+            color: $titleEmFontColorDark;
+        }
+
+        & .btn {
+            color: $btnColorDark;
+
+            &::after {
+                background: $btnColorDark;
+            }
+
+            &:hover {
+                color: $btnColorHoverDark;
+
+                &::after {
+                    background: $btnColorHoverDark;
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+
+    &:checked::before {
+        left: 40px;
+    }
+
+    &:checked {
+        background: #241da6;
+    }
+}
+
+//-------------HEADER----------------
+.header {
+    position: relative;
+    background-image: url('../source/img/bg/bg_1.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 1028px;
+    padding-top: 30px;
+
+    @media (max-width: 1024px) {
+        background: url('../source/img/bg/bg_tablet.png') no-repeat;
+    }
+
+    @media (max-width: 568px) {
+        background: url('../source/img/bg/bg_mob.png') no-repeat;
+    }
+
+    @media (max-width: 340px) {
+        background: url('../source/img/bg/bg_mob_sm.png') no-repeat;
+
+    }
+
+
+    &__container {
+        @extend %flex;
+        padding: 24px calc(50% - 1170px/2);
+        background: linear-gradient(270deg, #ffffff80 0%, #ffffff3e 24.1%, #ffffff00 47.19%), #ffffff05;
+        backdrop-filter: blur(4.5px);
+        margin: 0 auto 150px;
+
+        @media (max-width: 1170px) {
+            padding: 15px calc(50% - 1024px/2);
+        }
+
+        @media (max-width: 1024px) {
+            padding: 15px calc(50% - 768px/2);
+        }
+
+        @media (max-width: 768px) {
+            margin: 0 auto 50px;
+            padding: 15px calc(50% - 568px/2);
+        }
+
+        @media (max-width: 568px) {
+            margin: 0 auto 30px;
+            padding: 15px calc(50% - 340px/2);
+        }
+
+        @media (max-width: 340px) {
+            padding: 15px calc(50% - 300px/2);
+        }
+
+
+        .nav {
+            &__burger {
+                display: none;
+
+                @media (max-width: 768px) {
+                    &:checked~.menu {
+                        top: 100%;
+                        right: 0;
+                        transition: all 0.4s ease;
+                    }
+
+                    &:checked~.nav__burger-img {
+                        transform: rotate(45deg);
+                        transition: transform .8s ease;
+
+                        &::before {
+                            visibility: hidden;
+                        }
+
+                        &::after {
+                            transform: rotate(90deg);
+                            top: 0;
+                        }
+                    }
+                }
+            }
+
+            &__burger-img {
+                display: none;
+
+                @media (max-width: 768px) {
+                    position: relative;
+                    display: inline-block;
+                    width: 32px;
+                    height: 3px;
+                    background: #000;
+                    top: 0;
+                    right: 5vw;
+                    vertical-align: middle;
+
+                    &::before,
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        display: inline-block;
+                        width: 100%;
+                        height: 3px;
+                        background: #000;
+                        top: 8px;
+                    }
+
+                    &::after {
+                        top: -8px;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+            }
+
+            .menu {
+                @extend %flex;
+                gap: 1.95vw;
+                transition: all 0.6s;
+
+                @media (max-width: 768px) {
+                    position: absolute;
+                    flex-direction: column;
+                    width: 30%;
+                    top: 100%;
+                    right: 100%;
+                    gap: 15px;
+                    // z-index: 1;
+                    background: transparent;
+                    backdrop-filter: blur(3px);
+
+                }
+
+                &__item {
+                    position: relative;
+
+                    // @media (max-width: 998px) {
+                    //     padding: 20px 10px;
+                    //     text-align: center;
+
+                    // }
+
+                }
+
+                &__link {
+                    font-family: $mainFontFamily;
+                    color: $mainTextColor;
+                    font-size: 0.77rem;
+
+                    &:hover {
+                        cursor: pointer;
+
+                        &::after {
+                            // @include createLine;
+                        }
+                    }
+
+                    // @media (max-width: 998px) {
+                    //     &:hover {
+                    //         cursor: pointer;
+                    //         color: #530003;
+
+                    //         &::after {
+                    //             // @include createLine;
+                    //             bottom: 5px;
+                    //         }
+                    //     }
+                    // }
+
+                }
+            }
+        }
+
+
+    }
+
+    &__logo {
+        @extend %flex;
+        width: 120px;
+        height: 32px;
+    }
+
+    &__info {
+        @extend %flex;
+        padding: 24px calc(50% - 1170px/2);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        max-width: 60%;
     }
 }
