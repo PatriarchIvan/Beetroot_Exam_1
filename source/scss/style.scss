@@ -22,13 +22,17 @@ body {
 
     @media (max-width: 568px) {
         font-size: 1.3rem;
-        line-height: 1.1rem;
+        line-height: 1.5rem;
     }
 }
 
 .text {
+    font-family: $mainFontFamily;
+    color: $mainTextColor;
+    font-weight: 300;
     line-height: 1.44rem;
     z-index: 1;
+    opacity: 0.8;
 
     @media (max-width: 768px) {
         font-size: 1.2rem;
@@ -38,11 +42,28 @@ body {
     @media (max-width: 568px) {
         font-size: 1rem;
     }
+
+    @media (max-width: 568px) {
+        font-size: 0.75rem;
+    }
 }
 
 .blue {
     color: $titleEmFontColor;
     font-style: $titleEmFontStyle;
+}
+
+.big {
+    font-family: $titleFontFamily;
+    font-size: 3.77rem;
+    padding: 10px;
+    @media (max-width: 768px) {
+       font-size: 2.5rem;
+    }
+    @media (max-width: 340px) {
+        padding: 5px;
+        font-size: 1.5rem;
+     }
 }
 
 .btn {
@@ -80,11 +101,15 @@ body {
     }
 }
 
+.hidden {
+    display: none;
+}
+
 //-------------DARK MODE TOGGLER----------------
 #mode__toggler {
     z-index: 1;
     position: absolute;
-    top: 37px;
+    top: 50px;
     right: 50%;
     appearance: none;
     width: 80px;
@@ -96,7 +121,7 @@ body {
 
     @media (max-width: 1170px) {
         right: 53vw;
-        top: 37px;
+        top: 42px;
     }
 
     @media (max-width: 768px) {
@@ -110,7 +135,6 @@ body {
     @media (max-width: 340px) {
         right: 20vh;
     }
-
 
     &::before {
         content: '';
@@ -181,7 +205,7 @@ body {
     }
 
     &:checked {
-        background: #241da6;
+        background: #a7a5c8;
     }
 }
 
@@ -192,8 +216,8 @@ body {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    min-height: 1028px;
     padding-top: 30px;
+    min-height: 1080px;
 
     @media (max-width: 1024px) {
         background: linear-gradient(200.11deg, rgba(255, 255, 255, 0) 46.73%, #FFFFFF 63.21%), url('../source/img/bg/bg_tablet.png') no-repeat;
@@ -205,41 +229,35 @@ body {
 
     @media (max-width: 340px) {
         background: linear-gradient(200.11deg, rgba(255, 255, 255, 0) 46.73%, #FFFFFF 63.21%), url('../source/img/bg/bg_mob_sm.png') no-repeat;
-
     }
-
 
     &__container {
         @extend %flex;
         margin: 0 auto 150px auto;
-        padding: 10px 24px;
+        padding: 24px calc(50% - 1170px/2);
         background: linear-gradient(270deg, #ffffff80 0%, #ffffff3e 24.1%, #ffffff00 47.19%), #ffffff05;
         backdrop-filter: blur(4.5px);
 
+        @media (max-width: 1170px) {
+            padding: 15px calc(50% - 1024px/2);
+        }
+
+        @media (max-width: 1024px) {
+            padding: 15px calc(50% - 768px/2);
+        }
+
         @media (max-width: 768px) {
-            margin-bottom: 50px;
+            padding: 15px calc(50% - 568px/2);
+        }
+
+        @media (max-width: 568px) {
+            margin: 0 auto 30px;
+            padding: 15px calc(50% - 340px/2);
         }
 
         @media (max-width: 340px) {
-            margin-bottom: 30px;
+            padding: 15px calc(50% - 300px/2);
         }
-        // padding: 24px calc(50% - 1170px/2);
-        // @media (max-width: 1170px) {
-        //     padding: 15px calc(50% - 1024px/2);
-        // }
-        // @media (max-width: 1024px) {
-        //     padding: 15px calc(50% - 768px/2);
-        // }
-      
-
-        // @media (max-width: 568px) {
-        //     margin: 0 auto 30px;
-        //     padding: 15px calc(50% - 340px/2);
-        // }
-        // @media (max-width: 340px) {
-        //     padding: 15px calc(50% - 300px/2);
-        // }
-
 
         .nav {
             &__burger {
@@ -361,7 +379,6 @@ body {
             }
         }
 
-
     }
 
     &__logo {
@@ -370,16 +387,89 @@ body {
         height: 32px;
     }
 
-    &__info {
-        @extend %flex;
-        padding: 24px calc(50% - 1170px/2);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        max-width: 60%;
+}
 
-        @media (max-width: 340px) {
-            max-width: 75%;
+//-------------MAIN----------------
+.main {
+    margin: 0 auto;
+    top: 0;
+    width: 100%;
+    position: absolute;
+    padding: 250px calc(50% - 1170px/2);
+    @media (max-width: 1170px) {
+        padding: 250px calc(50% - 1024px/2);
+    }
+
+    @media (max-width: 1024px) {
+        padding: 250px calc(50% - 768px/2);
+    }
+
+    @media (max-width: 768px) {
+        padding: 200px calc(50% - 568px/2);
+    }
+
+    @media (max-width: 568px) {
+        margin: 0 auto 30px;
+        padding: 150px calc(50% - 340px/2);
+    }
+
+    @media (max-width: 340px) {
+        padding: 100px calc(50% - 300px/2);
+    }
+
+    .section {
+        &__info {
+            @extend %flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 50%;
+            margin-bottom: 150px;
+
+            @media (max-width: 340px) {
+                max-width: 75%;
+                margin-bottom: 50px;
+            }
         }
+
+        &__overflow {
+            @extend %flex;
+            border: 1px solid blue;
+            position: relative;
+            width: 100%;
+            padding: 50px 135px 50px 0;
+            background: url('../source/img/main/stat_img.png') no-repeat left center;
+            min-height: 670px;
+
+            &-content {
+                @extend %flex;
+                position: absolute;
+                justify-content: flex-end;
+                width: 100%;
+            }
+
+            &-left {
+                @extend %flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 71px 0;
+                background: #ffffffb8;
+                gap: 80px;
+                width: 30%
+            }
+
+            &-right {
+                @extend %flex;
+                background: #ffffffb8;
+                flex-direction: column;
+                align-items: flex-start;
+                max-width: 400px;
+                gap: 40px;
+                padding: 45px;
+                border: 1px solid yellow;
+            }
+        }
+
+
     }
 }
