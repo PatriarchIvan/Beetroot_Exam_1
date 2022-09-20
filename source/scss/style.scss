@@ -46,6 +46,37 @@ body {
     @media (max-width: 568px) {
         font-size: 0.75rem;
     }
+
+    &__quote {
+        position: relative;
+        opacity: 1;
+        font-size: 1.77rem;
+        line-height: 2.55rem;
+        color: $mainTextColorDark;
+        margin-bottom: 40px;
+
+        &::after {
+            content: "";
+            width: 102px;
+            height: 84px;
+            position: absolute;
+            background: url("../source/img/icon_quote.svg");
+            top: -35px;
+            left: -42px;
+
+            @media (max-width: 568px) {
+                transform: scale(0.75);
+                left: -22px;
+            }
+        }
+    }
+
+    &__author {
+        font-family: $titleFontFamily;
+        color: $mainTextColorDark;
+        font-style: italic;
+        font-size: 1rem;
+    }
 }
 
 .blue {
@@ -61,7 +92,7 @@ body {
     font-size: 3.77rem;
     padding: 10px;
 
-    
+
     @media (max-width: 1024px) {
         padding: 0;
     }
@@ -169,7 +200,6 @@ body {
             background-image: linear-gradient(200.11deg, rgba(22, 25, 38, 0) 46.73%, #161926 63.21%), url('../source/img/bg/bg_1_dark.png');
             color: $mainTextColorDark;
 
-
             @media (max-width: 1024px) {
                 background-image: linear-gradient(200.11deg, rgba(22, 25, 38, 0) 46.73%, #161926 63.21%), url('../source/img/bg/bg_tablet_dark.png');
             }
@@ -197,6 +227,12 @@ body {
 
         & .text {
             color: $mainTextColorDark;
+
+            &.text__quote {
+                &::after {
+                    background: url("../source/img/icon_quote_dark.svg")
+                }
+            }
         }
 
         & .blue {
@@ -460,29 +496,35 @@ body {
     }
 
     .section {
+        margin-bottom: 120px;
+
+        @media (max-width: 768px) {
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 340px) {
+            margin-bottom: 25px;
+        }
+
         &__info {
             @extend %flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 20px;
             max-width: 50%;
-            margin-bottom: 150px;
 
             @media (max-width: 340px) {
                 max-width: 75%;
-                margin-bottom: 50px;
             }
         }
 
         &__overflow {
             z-index: 2;
             @extend %flex;
-            border: 1px solid blue;
             position: relative;
             width: 100%;
             background: url('../source/img/main/stat_img.png') no-repeat left center;
             min-height: 670px;
-
 
             &_content {
                 @extend %flex;
@@ -529,25 +571,25 @@ body {
                         height: 40px;
                         top: 42px;
                         left: -10px;
-                
+
                         @media (max-width: 1024px) {
                             top: 32px;
                             left: -15px;
                         }
-                
+
                         @media (max-width: 768px) {
                             transform: scale(0.75);
                             top: 32px;
                             left: 0;
                         }
-                
+
                         @media (max-width: 568px) {
                             transform: scale(0.5);
                             top: 5px;
                             left: -9px;
                         }
                     }
-                    
+
                     &:nth-of-type(1)::after,
                     &:nth-of-type(2)::after {
                         content: "";
@@ -585,6 +627,75 @@ body {
             }
         }
 
+        &__quad {
+            @extend %flex;
+            flex-wrap: wrap;
+            gap: 30px;
 
+            & .text__block {
+                @extend %flex;
+                position: relative;
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: start;
+                gap: 30px;
+                max-width: 570px;
+                min-height: 300px;
+                padding: 20px 35px 50px;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 1px;
+                    background: $pseudo;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    @media (max-width: 768px) {
+                        top: -10px;
+                    }
+                }
+
+                @media (max-width: 1170px) {
+                    max-width: max-content;
+                    min-height: fit-content;
+                    gap: 5px;
+                    padding: 20px;
+                }
+
+                @media (max-width: 768px) {
+                    gap: 20px;
+                    padding: 0;
+                }
+            }
+        }
+
+        &__quote {
+            padding: 17.5% 25% 25% 8%;
+            background: url("../source/img/bg/bg_quote.png")no-repeat center;
+            background-size: cover;
+            max-height: 600px;
+
+            @media (max-width: 768px) {
+                padding-right: 15%;
+            }
+
+            @media (max-width: 340px) {
+                padding-right: 5%;
+            }
+        }
+
+        &__video {
+            &_block{
+                position: relative;
+                border: 1px solid $pseudoColor;
+                border-radius: 32px;
+                &::after {
+                    
+                }
+            }
+        }
     }
 }
