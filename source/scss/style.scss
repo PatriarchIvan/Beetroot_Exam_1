@@ -149,7 +149,6 @@ body {
 .hidden {
     display: none;
 }
-
 //-------------DARK MODE TOGGLER----------------
 #mode__toggler {
     z-index: 3;
@@ -233,6 +232,7 @@ body {
                     background: url("../source/img/icon_quote_dark.svg")
                 }
             }
+
         }
 
         & .blue {
@@ -264,6 +264,25 @@ body {
             }
         }
 
+        & .section__quad {
+            & .text__block {
+                &::before {
+                    background: $pseudoColorDark;
+                }
+            }
+        }
+
+        & .section__video {
+            &_block {
+                border: 1px solid $pseudoColorDark;
+
+                &::before,
+                &::after {
+                    border: 1px solid $pseudoColorDark;
+                }
+            }
+        }
+
         .big {
             color: $mainTextColorDark;
 
@@ -285,7 +304,6 @@ body {
         background: #a7a5c8;
     }
 }
-
 //-------------HEADER----------------
 .header {
     position: relative;
@@ -648,7 +666,7 @@ body {
                     content: "";
                     width: 100%;
                     height: 1px;
-                    background: $pseudo;
+                    background: $pseudoColor;
                     top: 0;
                     left: 50%;
                     transform: translateX(-50%);
@@ -688,12 +706,60 @@ body {
         }
 
         &__video {
-            &_block{
+            & .video {
+                padding: 30px 70px 30px 30px;
+                width: 100%;
+                max-height: 540px;
+
+                @media (max-width: 768px) {
+                    max-height: 320px;
+                    padding: 15px 50px 15px 30px;
+                }
+
+                @media (max-width: 568px) {
+                    max-height: 180px;
+                    padding: 15px 30px 15px 20px;
+                }
+
+                @media (max-width: 340px) {
+                    max-height: 140px;
+                    padding: 15px 15px 15px 20px;
+                }
+            }
+
+            &_block {
                 position: relative;
                 border: 1px solid $pseudoColor;
                 border-radius: 32px;
+                margin-bottom: 50px;
+
                 &::after {
-                    
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 1%;
+                    transform: translateY(-50%);
+                    border: 1px solid $pseudoColor;
+                    border-radius: 35px;
+                    width: 35px;
+                    height: 35px;
+
+                    @media (max-width: 568px) {
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 1%;
+                    transform: translateY(-50%);
+                    border: 1px solid $pseudoColor;
+                    border-radius: 13px;
+                    width: 13px;
+                    height: 13px;
                 }
             }
         }
