@@ -24,6 +24,10 @@ body {
         font-size: 1.3rem;
         line-height: 1.5rem;
     }
+
+    &_low {
+        font-size: 1.33rem;
+    }
 }
 
 .text {
@@ -143,6 +147,11 @@ body {
             background: $btnColorHover;
             opacity: 0.4;
         }
+    }
+
+    &_border {
+        border: 1px solid $pseudoColor;
+        padding: 33px 50px;
     }
 }
 
@@ -543,6 +552,7 @@ body {
             width: 100%;
             background: url('../source/img/main/stat_img.png') no-repeat left center;
             min-height: 670px;
+           
 
             &_content {
                 @extend %flex;
@@ -555,7 +565,7 @@ body {
                 @extend %flex;
                 flex-direction: column;
                 align-items: center;
-                background: #ffffffb8;
+                background: $mainBlockColorFade;
                 padding: 19px;
                 gap: 80px;
 
@@ -733,6 +743,9 @@ body {
                 border-radius: 32px;
                 margin-bottom: 50px;
 
+                @media (max-width: 568px) {
+                    margin-bottom: 15px;
+                }
                 &::after {
                     content: "";
                     position: absolute;
@@ -761,6 +774,34 @@ body {
                     width: 13px;
                     height: 13px;
                 }
+            }
+
+            & .title {
+                margin-bottom: 20px;
+            }
+        }
+
+        &__btn {
+            background: url("../source/img/main/features_bg.png") no-repeat left;
+            position: relative;
+            min-height: 540px;
+            &_content {
+                @extend %flex;
+                position: relative;
+                top: 30px;
+                right: -35%;
+                max-height: 450px;
+                padding: 75px 0 70px 75px;
+                flex-wrap: wrap;
+                background: $mainBlockColorFade;
+            }
+            &_el {
+                @extend %flex;
+                flex-direction: column;
+                align-items: flex-start;
+                min-width: 300px;
+                min-height: 120px;
+                gap: 15px;
             }
         }
     }
