@@ -8,7 +8,7 @@ body {
     font-size: $mainFontSize;
     color: $mainTextColor;
 }
-
+//-------------ELEMENTS----------------
 .title {
     font-family: $titleFontFamily;
     z-index: 2;
@@ -64,7 +64,7 @@ body {
             width: 102px;
             height: 84px;
             position: absolute;
-            background: url("../source/img/icon_quote.svg");
+            background: url("../source/img/icons/icon_quote.svg");
             top: -35px;
             left: -42px;
 
@@ -92,6 +92,10 @@ body {
             font-style: italic;
             align-self: start;
         }
+    }
+
+    &__footer {
+        font-size: 0.77rem;
     }
 }
 
@@ -245,7 +249,7 @@ body {
     }
 
     @media (max-width: 340px) {
-        right: 20vh;
+        right: 25vh;
     }
 
     &::before {
@@ -281,8 +285,14 @@ body {
 
             & .nav {
                 & .menu {
+                    @media (max-width: 768px) {
+                        background: $mainBgColorDark;
+                    }
                     &__link {
                         color: $mainTextColorDark;
+                        &:hover::before {
+                            background: $btnColorHoverDark;
+                        }
                     }
                 }
             }
@@ -297,7 +307,7 @@ body {
 
             &.text__quote {
                 &::after {
-                    background: url("../source/img/icon_quote_dark.svg")
+                    background: url("../source/img/icons/icon_quote_dark.svg")
                 }
             }
 
@@ -365,7 +375,7 @@ body {
             color: $mainTextColorDark;
 
             &::before {
-                background: url("../source/img/icon_dark.svg");
+                background: url("../source/img/icons/icon_dark.svg");
             }
         }
 
@@ -532,10 +542,10 @@ body {
                     position: absolute;
                     flex-direction: column;
                     width: 30%;
-                    top: 100%;
+                    top: 101%;
                     right: 100%;
                     gap: 15px;
-                    background: rgb(170, 143, 143);
+                    background: $mainBgColor;
                     opacity: 0.9;
                     backdrop-filter: blur(3px);
                 }
@@ -547,34 +557,25 @@ body {
                         padding: 20px 10px;
                         text-align: center;
                     }
-
                 }
 
                 &__link {
+                    position: relative;
                     font-family: $mainFontFamily;
                     color: $mainTextColor;
                     font-size: 0.77rem;
+                    transition: all 0.4s ease;
 
-                    &:hover {
-                        cursor: pointer;
-
-                        &::after {
-                            // @include createLine;
-                        }
+                    &:hover::before {
+                        content: "";
+                        position: absolute;
+                        top: 17px;
+                        left: 0;
+                        width: 100%;
+                        height: 3px;
+                        background: $btnColor;
+                        opacity: 0.3;
                     }
-
-                    // @media (max-width: 998px) {
-                    //     &:hover {
-                    //         cursor: pointer;
-                    //         color: #530003;
-
-                    //         &::after {
-                    //             // @include createLine;
-                    //             bottom: 5px;
-                    //         }
-                    //     }
-                    // }
-
                 }
             }
         }
@@ -593,29 +594,8 @@ body {
 .main {
     position: relative;
     top: -1000px;
-    // position: absolute;
-    // top: 0;
-    padding: 250px calc(50% - 1170px/2);
-    @media (max-width: 1170px) {
-        padding: 250px calc(50% - 1024px/2);
-    }
-
-    @media (max-width: 1024px) {
-        padding: 250px calc(50% - 768px/2);
-    }
-
-    @media (max-width: 768px) {
-        padding: 200px calc(50% - 568px/2);
-    }
-
-    @media (max-width: 568px) {
-        margin: 0 auto 30px;
-        padding: 150px calc(50% - 340px/2);
-    }
-
-    @media (max-width: 340px) {
-        padding: 100px calc(50% - 300px/2);
-    }
+    padding: 250px calc(50% - 1170px/2) 150px;
+    @include mediaMain;
 
     .section {
         margin-bottom: 120px;
@@ -689,7 +669,7 @@ body {
                     &:nth-of-type(2)::before {
                         content: "";
                         position: absolute;
-                        background: url("../source/img/icon.svg");
+                        background: url("../source/img/icons/icon.svg");
                         width: 18px;
                         height: 40px;
                         top: 42px;
@@ -1033,33 +1013,23 @@ body {
     font-size: 0.77rem;
     background-color: $mainBgColor; 
     padding: 20px calc(50% - 1170px/2);
-
-    @media (max-width: 1170px) {
-        padding: 20px calc(50% - 1024px/2);
-    }
-
-    @media (max-width: 1024px) {
-        padding: 20px calc(50% - 768px/2);
-    }
-
-    @media (max-width: 768px) {
-        padding: 20px calc(50% - 568px/2);
-    }
-
-    @media (max-width: 568px) {
-        padding: 20px calc(50% - 340px/2);
-    }
-
-    @media (max-width: 340px) {
-        padding: 10px calc(50% - 300px/2);
-    }
+    @include mediaFooter;
     &__links {
         @extend %flex;
         gap: 20px;
+        @media (max-width: 568px) {
+            gap: 25px;
+        }
     }
     .link {
         font-size: 0.77rem;
+        position: relative;
         color: $mainTextColor;
         text-decoration: none;
+        transition: all 0.3s ease;
+        &:hover{
+           transform: scale(1.2);
+        }
     }
 }
+

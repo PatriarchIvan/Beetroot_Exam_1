@@ -1,0 +1,43 @@
+@mixin mediaMain {
+    @media (max-width: 1170px) {
+        padding: 250px calc(50% - 1024px/2) 120px;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 250px calc(50% - 768px/2) 100px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 200px calc(50% - 568px/2) 75px;
+    }
+
+    @media (max-width: 568px) {
+        padding: 150px calc(50% - 340px/2) 35px;
+    }
+
+    @media (max-width: 340px) {
+        padding: 100px calc(50% - 300px/2);
+    }
+}
+
+@mixin mediaFooter {
+    @media (max-width: 1170px) {
+        padding: 20px calc(50% - 1024px/2);
+    }
+
+    @media (max-width: 1024px) {
+        padding: 20px calc(50% - 768px/2);
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px calc(50% - 568px/2);
+    }
+
+    @media (max-width: 568px) {
+        padding: 20px calc(50% - 340px/2);
+    }
+
+    @media (max-width: 340px) {
+        padding: 10px calc(50% - 300px/2);
+    }
+}
