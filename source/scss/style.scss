@@ -152,6 +152,11 @@ body {
     &_border {
         border: 1px solid $pseudoColor;
         padding: 33px 50px;
+
+        &::after {
+            width: 60%;
+            left: 20%;
+        }
     }
 }
 
@@ -787,21 +792,52 @@ body {
             min-height: 540px;
             &_content {
                 @extend %flex;
-                position: relative;
-                top: 30px;
-                right: -35%;
-                max-height: 450px;
-                padding: 75px 0 70px 75px;
+                position: absolute;
+                align-items: flex-start;
+                flex-direction: column;
                 flex-wrap: wrap;
+                top: 15%;
+                right: 7%;
+                max-height: 450px;
+                width: 60%;
+                padding: 75px 0 70px 75px;
                 background: $mainBlockColorFade;
+
+                @media (max-width: 1170px) {
+                    right: -5%;
+                    width: 100%;
+                }
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                    right: 0;
+                    top: 15%;
+                    gap: 20px;
+                    padding: 10px;
+                }
+
+                @media (max-width: 568px) {
+                    flex-wrap: nowrap;
+                    top: 0;
+                    padding-bottom: 550px;
+                }
             }
             &_el {
                 @extend %flex;
                 flex-direction: column;
                 align-items: flex-start;
-                min-width: 300px;
-                min-height: 120px;
                 gap: 15px;
+
+                & .text {
+                    max-width: 250px;
+                }
+
+                & .btn_border {
+                    align-self: flex-end;
+                    @media (max-width: 768px) {
+                        align-self: flex-start;
+                    }
+                }
             }
         }
     }
