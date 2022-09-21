@@ -270,6 +270,10 @@ body {
             }
         }
 
+        & .btn_border {
+            border: 1px solid $btnColorDark;
+        }
+
         & .section__overflow {
 
             &_left,
@@ -297,6 +301,11 @@ body {
             }
         }
 
+        & .section__btn {
+            &_content {
+                background-color: $mainBlockColorDarkFade;
+            }
+        }
         .big {
             color: $mainTextColorDark;
 
@@ -804,7 +813,7 @@ body {
                 background: $mainBlockColorFade;
 
                 @media (max-width: 1170px) {
-                    right: -5%;
+                    right: 0;
                     width: 100%;
                 }
 
@@ -819,6 +828,7 @@ body {
                 @media (max-width: 568px) {
                     flex-wrap: nowrap;
                     top: 0;
+                    padding: 35px 35px 525px 35px;
                     padding-bottom: 550px;
                 }
             }
