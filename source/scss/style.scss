@@ -214,6 +214,10 @@ body {
 }
 
 //-------------DARK MODE TOGGLER----------------
+.mode {
+    height: 100vh
+}
+
 #mode__toggler {
     z-index: 3;
     position: absolute;
@@ -386,6 +390,15 @@ body {
             }
         }
 
+        .footer {
+            background-color: $mainBgColorDark;
+            color: $mainTextColorDark;
+
+            & .link {
+                color: $mainTextColorDark;
+            }
+        }
+
     }
 
     &:checked::before {
@@ -530,11 +543,10 @@ body {
                 &__item {
                     position: relative;
 
-                    // @media (max-width: 998px) {
-                    //     padding: 20px 10px;
-                    //     text-align: center;
-
-                    // }
+                    @media (max-width: 768px) {
+                        padding: 20px 10px;
+                        text-align: center;
+                    }
 
                 }
 
@@ -579,8 +591,10 @@ body {
 
 //-------------MAIN----------------
 .main {
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: -1000px;
+    // position: absolute;
+    // top: 0;
     padding: 250px calc(50% - 1170px/2);
     @media (max-width: 1170px) {
         padding: 250px calc(50% - 1024px/2);
@@ -727,7 +741,7 @@ body {
                 padding: 45px;
 
                 @media (max-width: 568px) {
-                    padding: 52px;
+                    padding: 53px;
                 }
 
                 @media (max-width: 340px) {
@@ -1011,5 +1025,41 @@ body {
 
 //-------------FOOTER----------------
 .footer {
-    z-index: 4;
+    @extend %flex;
+    padding: 30px 0;
+    position: relative;
+    top: -1000px;
+    left: 0;
+    font-size: 0.77rem;
+    background-color: $mainBgColor; 
+    padding: 20px calc(50% - 1170px/2);
+
+    @media (max-width: 1170px) {
+        padding: 20px calc(50% - 1024px/2);
+    }
+
+    @media (max-width: 1024px) {
+        padding: 20px calc(50% - 768px/2);
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px calc(50% - 568px/2);
+    }
+
+    @media (max-width: 568px) {
+        padding: 20px calc(50% - 340px/2);
+    }
+
+    @media (max-width: 340px) {
+        padding: 10px calc(50% - 300px/2);
+    }
+    &__links {
+        @extend %flex;
+        gap: 20px;
+    }
+    .link {
+        font-size: 0.77rem;
+        color: $mainTextColor;
+        text-decoration: none;
+    }
 }
