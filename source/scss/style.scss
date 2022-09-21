@@ -73,6 +73,11 @@ body {
                 left: -22px;
             }
         }
+
+        &_low {
+            font-size: 0.88rem;
+            color: $mainTextColorDark;
+        }
     }
 
     &__author {
@@ -80,6 +85,13 @@ body {
         color: $mainTextColorDark;
         font-style: italic;
         font-size: 1rem;
+
+        &_low {
+            font-size: 1.11rem;
+            color: $mainTextColorDark;
+            font-style: italic;
+            align-self: start;
+        }
     }
 }
 
@@ -160,9 +172,47 @@ body {
     }
 }
 
+.form {
+    @extend %flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    min-width: 450px;
+
+    @media (max-width: 1024px) {
+        min-width: auto;
+    }
+
+    @media (max-width: 768px) {
+        gap: 20px;
+    }
+
+    & .input {
+        width: 100%;
+        padding: 5px;
+
+    }
+
+    & .input::placeholder {
+        background-color: $mainBlockColorFade;
+        color: $mainTextColor;
+        opacity: 0.8;
+        font-style: italic;
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: $titleFontFamily;
+    }
+
+    & .input:focus {
+        background-color: $mainBlockColorFade;
+        border-bottom: 1px solid $pseudoColor;
+    }
+}
+
 .hidden {
     display: none;
 }
+
 //-------------DARK MODE TOGGLER----------------
 #mode__toggler {
     z-index: 3;
@@ -306,6 +356,7 @@ body {
                 background-color: $mainBlockColorDarkFade;
             }
         }
+
         .big {
             color: $mainTextColorDark;
 
@@ -317,6 +368,24 @@ body {
         .main {
             background-color: $mainBgColorDark;
         }
+
+        .form {
+            & .input {
+                color: $mainTextColorDark;
+                background-color: $mainBlockColorDarkFade;
+            }
+
+            & .input::placeholder {
+                color: $mainTextColorDark;
+                background-color: $mainBlockColorDarkFade;
+            }
+
+            & .input:focus {
+                border-bottom: 1px solid $pseudoColorDark;
+                background-color: $mainBlockColorDarkFade;
+            }
+        }
+
     }
 
     &:checked::before {
@@ -327,6 +396,7 @@ body {
         background: #a7a5c8;
     }
 }
+
 //-------------HEADER----------------
 .header {
     position: relative;
@@ -509,12 +579,9 @@ body {
 
 //-------------MAIN----------------
 .main {
-    margin: 0 auto;
-    top: 0;
-    width: 100%;
     position: absolute;
+    top: 0;
     padding: 250px calc(50% - 1170px/2);
-
     @media (max-width: 1170px) {
         padding: 250px calc(50% - 1024px/2);
     }
@@ -566,7 +633,7 @@ body {
             width: 100%;
             background: url('../source/img/main/stat_img.png') no-repeat left center;
             min-height: 670px;
-           
+
 
             &_content {
                 @extend %flex;
@@ -760,6 +827,7 @@ body {
                 @media (max-width: 568px) {
                     margin-bottom: 15px;
                 }
+
                 &::after {
                     content: "";
                     position: absolute;
@@ -799,6 +867,7 @@ body {
             background: url("../source/img/main/features_bg.png") no-repeat left;
             position: relative;
             min-height: 540px;
+
             &_content {
                 @extend %flex;
                 position: absolute;
@@ -829,9 +898,9 @@ body {
                     flex-wrap: nowrap;
                     top: 0;
                     padding: 35px 35px 525px 35px;
-                    padding-bottom: 550px;
                 }
             }
+
             &_el {
                 @extend %flex;
                 flex-direction: column;
@@ -844,11 +913,103 @@ body {
 
                 & .btn_border {
                     align-self: flex-end;
+
                     @media (max-width: 768px) {
                         align-self: flex-start;
                     }
                 }
             }
         }
+
+        &__cards {
+            & .title {
+                align-self: start;
+            }
+
+            & .text {
+                margin: 20px 0;
+            }
+
+            & .cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+
+                @media (max-width: 1170px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media (max-width: 568px) {
+                    grid-template-rows: repeat(3, 1fr);
+                }
+
+                & .card {
+
+                    @media (max-width: 568px) {
+                        max-width: 100%;
+                        grid-area: span 1/ span 2;
+                    }
+
+                    &:nth-child(1) {
+                        background: url("../source/img/main/card_1_bg.png") no-repeat;
+                        background-size: cover;
+                    }
+
+                    &:nth-child(2) {
+                        background: url("../source/img/main/card_1_bg.png") no-repeat;
+                        background-size: cover;
+                    }
+
+                    &:nth-child(3) {
+                        background: url("../source/img/main/card_3_bg.png") no-repeat;
+                        background-size: cover;
+
+                        @media (max-width: 1170px) {
+                            max-width: 88%;
+                            align-items: center;
+                            grid-area: span 1/ span 2;
+                        }
+
+                        @media (max-width: 1024px) {
+                            max-width: 100%;
+                        }
+                    }
+
+                    @extend %flex;
+                    justify-content: flex-end;
+                    padding: 30px 40px;
+                    flex-direction: column;
+                    gap: 5px;
+                    max-width: 370px;
+
+                    @media (max-width: 1170px) {
+                        padding: 20px;
+                    }
+
+                    @media (max-width: 768px) {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+
+        }
+
+        &__contacts {
+            @extend %flex;
+            gap: 20px;
+
+            &_text {
+                max-width: 500px;
+            }
+
+            & .title {
+                margin-bottom: 20px;
+            }
+        }
     }
+}
+
+//-------------FOOTER----------------
+.footer {
+    z-index: 4;
 }
